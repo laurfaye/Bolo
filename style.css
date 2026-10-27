@@ -1,50 +1,40 @@
-section {
-  margin-top: 2rem;
+/* Minimal polish */
+main {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.tagline {
-  opacity: 0.75;
-}
-
-.card {
-  margin-top: 1rem;
-  padding: 1rem 1.25rem;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-body.dark-mode .card {
-  background-color: #1e1e1e;
-}
-
-.tag {
-  display: inline-block;
-  margin-top: 0.5rem;
-  padding: 0.15rem 0.6rem;
-  font-size: 0.8rem;
-  background-color: #e6f0fa;
-  color: #004b99;
-  border-radius: 999px;
-}
-
-.skills {
-  display: flex;
-  gap: 0.5rem;
-  list-style: none;
-  margin-top: 0.5rem;
-}
-
-.skills li {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid #0066cc;
-  border-radius: 999px;
-  font-size: 0.9rem;
-}
-
-footer {
-  margin-top: 2rem;
+#hero {
   text-align: center;
-  font-size: 0.85rem;
-  opacity: 0.7;
+  padding: 3rem 0 1rem;
+}
+
+#hero h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #0066cc;
+}
+
+body.dark-mode h2 {
+  color: #4d9fff;
+}
+
+button {
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+body.dark-mode header nav {
+  border-bottom-color: #333;
 }
