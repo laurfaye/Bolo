@@ -159,7 +159,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .side-btns button:hover { background: var(--pink-soft); transform: scale(1.08); }
 
 /* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+.about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; text-align: justify;}
 .glass h3 { margin-bottom: 12px; font-size: 1.2rem; }
 .glass p { color: var(--ink-soft); margin-bottom: 12px; }
 .goal b { color: var(--matcha-deep); }
@@ -192,7 +192,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
 .filter { padding: 9px 20px; border-radius: 999px; font-weight: 600; font-size: .88rem; background: rgba(255, 255, 255, .7); border: 1px solid var(--line); transition: .25s; }
 .filter.active, .filter:hover { background: linear-gradient(135deg, var(--pink), var(--matcha)); color: #2f4535; }
-.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+.projects { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; text-align: justify; }
 .project { padding: 18px; transition: .3s; }
 .project:hover { transform: translateY(-6px); }
 .project.hide { display: none; }
