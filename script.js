@@ -76,12 +76,26 @@ function updateNav() {
 }
 
 // clicking a nav link highlights it immediately, then scroll tracking takes over
-links.forEach((a, i) => a.addEventListener("click", () => setActive(i)));
-window.addEventListener("scroll", updateNav, { passive: true });
+let navLock = false, lockTimer;
+function lockNav() {
+  navLock = true;
+  clearTimeout(lockTimer);
+  lockTimer = setTimeout(() => { navLock = false; updateNav(); }, 200);
+}
+links.forEach((a, i) => a.addEventListener("click", () => { setActive(i); lockNav(); }));
+window.addEventListener("scroll", () => {
+  if (navLock) lockNav();
+  else updateNav();
+}, { passive: true });
 window.addEventListener("resize", updateNav);
 updateNav();
 
-const go = (i) => sections[Math.max(0, Math.min(sections.length - 1, i))].scrollIntoView({ behavior: "smooth" });
+const go = (i) => {
+  const n = Math.max(0, Math.min(sections.length - 1, i));
+  setActive(n);
+  lockNav();
+  sections[n].scrollIntoView({ behavior: "smooth" });
+};
 document.getElementById("upBtn").addEventListener("click", () => go(current - 1));
 document.getElementById("downBtn").addEventListener("click", () => go(current + 1));
 
