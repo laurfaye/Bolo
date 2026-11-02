@@ -59,15 +59,27 @@ const sections = [...document.querySelectorAll(".section")];
 const links = [...document.querySelectorAll(".nav a")];
 let current = 0;
 
-const navObserver = new IntersectionObserver((entries) => {
-  entries.forEach((en) => {
-    if (en.isIntersecting) {
-      current = sections.indexOf(en.target);
-      links.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
-    }
+function setActive(i) {
+  current = i;
+  links.forEach((a) =>
+    a.classList.toggle("active", a.getAttribute("href") === "#" + sections[i].id)
+  );
+}
+
+function updateNav() {
+  const probe = window.scrollY + window.innerHeight * 0.4;
+  let idx = 0;
+  sections.forEach((s, i) => {
+    if (s.getBoundingClientRect().top + window.scrollY <= probe) idx = i;
   });
-}, { threshold: 0.5 });
-sections.forEach((s) => navObserver.observe(s));
+  setActive(idx);
+}
+
+// clicking a nav link highlights it immediately, then scroll tracking takes over
+links.forEach((a, i) => a.addEventListener("click", () => setActive(i)));
+window.addEventListener("scroll", updateNav, { passive: true });
+window.addEventListener("resize", updateNav);
+updateNav();
 
 const go = (i) => sections[Math.max(0, Math.min(sections.length - 1, i))].scrollIntoView({ behavior: "smooth" });
 document.getElementById("upBtn").addEventListener("click", () => go(current - 1));
